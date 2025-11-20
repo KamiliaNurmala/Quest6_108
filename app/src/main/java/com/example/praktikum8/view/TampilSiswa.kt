@@ -67,7 +67,13 @@ fun TampilSiswa(
                     }
                     Divider(thickness = dimensionResource(id=R.dimen.thickness_divider))
                 }
-
+                Spacer(modifier = Modifier.height(dimensionResource(id=R.dimen.padding_small)))
+                Button(
+                    modifier = Modifier.fillMaxWidth(),
+                    onClick = onBackButtonClicked
+                ){
+                    Text(stringResource(id=R.string.back))
+                }
 
             }
 
