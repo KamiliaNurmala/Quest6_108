@@ -55,5 +55,78 @@ fun FormSiswa(
                 )
             )
         }
-    ) {
+    ) { innerPadding ->
+        Column(
+            modifier = Modifier
+                .padding(innerPadding)
+                .padding(horizontal = 16.dp),
+            verticalArrangement = Arrangement.Top,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            // Input Nama
+            OutlinedTextField(
+                value = txtNama,
+                singleLine = true,
+                shape = MaterialTheme.shapes.medium,
+                modifier = Modifier
+                    .width(350.dp)
+                    .padding(top = 20.dp),
+                label = { Text(text = "Nama Lengkap") },
+                onValueChange = { txtNama = it }
+            )
+
+            HorizontalDivider(
+                modifier = Modifier
+                    .padding(vertical = 20.dp)
+                    .fillMaxWidth(),
+                thickness = 1.dp,
+                color = Color.Red
+            )
+
+            // Radio Button Jenis Kelamin
+            Row{
+                pilihanJK.forEach { item ->
+                    Row(
+                        modifier = Modifier.selectable(
+                            selected = txtGender == item,
+                            onClick = {
+                                txtGender = item
+                            }
+                        ),
+                        verticalAlignment = Alignment.CenterVertically){
+                            RadioButton(
+                                selected = txtGender == item,
+                                onClick = {
+                                    txtGender = item
+                                }
+                            )
+                            Text(text = item)
+                            Spacer(modifier = Modifier.width(10.dp))
+                        }
+                }
+            }
+
+            HorizontalDivider(
+                modifier = Modifier
+                    .padding(vertical = 20.dp)
+                    .fillMaxWidth(),
+                thickness = 1.dp,
+                color = Color.Red
+            )
+
+            // Input Alamat
+            OutlinedTextField(
+                value = txtAlamat,
+                singleLine = true,
+                shape = MaterialTheme.shapes.medium,
+                modifier = Modifier.width(350.dp),
+                label = { Text(text = "Alamat Lengkap")},
+                onValueChange = { txtAlamat = it }
+            )
+
+            Spacer(modifier = Modifier.height(30.dp))
+
+            
+        }
+    }
 }
