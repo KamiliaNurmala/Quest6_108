@@ -34,9 +34,9 @@ import com.example.praktikum8.model.Siswa
 @Composable
 fun TampilSiswa(
     statusUiSiswa: Siswa,
-    onBackButtonClicked:() -> Unit
+    onBackButtonClicked:()->Unit
 ){
-    val items = listOf (
+    val items = listOf(
         Pair(stringResource(R.string.nama), statusUiSiswa.nama),
         Pair(stringResource(id = R.string.gender), statusUiSiswa.gender),
         Pair(stringResource(R.string. alamat), statusUiSiswa.alamat)
@@ -55,7 +55,21 @@ fun TampilSiswa(
             modifier = Modifier.padding(isiRuang),
             verticalArrangement = Arrangement.SpaceBetween
         ){
+            Column(
+                modifier =  Modifier.padding(dimensionResource(id=R.dimen.padding_medium)),
+                verticalArrangement = Arrangement.spacedBy(dimensionResource(id=R.dimen.padding_small))
+            ){
+                items.forEach { item ->
+                    Column {
+                        Text(text = item.first.uppercase(), fontSize = 16.sp)
+                        Spacer(modifier = Modifier.height(dimensionResource(id=R.dimen.padding_small)))
+                        Text(text = item.second, fontWeight = FontWeight.Bold, fontSize = 16.sp)
+                    }
+                    Divider(thickness = dimensionResource(id=R.dimen.thickness_divider))
+                }
 
+
+            }
 
 
         }
